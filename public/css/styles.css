@@ -1,0 +1,43 @@
+@font-face{
+	font-family: 'roboto';
+	src: url('font/Roboto-Light.ttf');
+}
+@font-face{
+	font-family: 'robotoThin';
+	src: url('font/Roboto-Thin.ttf');
+}
+body {
+	/*background-color: #CCC;*/
+	padding: 0;
+	margin: 0;
+	font-family : 'roboto';
+}
+.header {
+	background-color: #f0f0f0;
+	height: 5em;
+	width: 100%;
+}
+.postLabel {
+	text-align: center;
+	font-family: 'roboto';
+	font-size: 20px;
+}
+.imgContainer {
+	text-align: center;
+	height: 15em;
+	border-radius: 1em;
+	border: 5px solid #efefef;
+	border-style: dashed;
+	margin-top: 1em;
+	padding: .5em;
+}
+.paginationContainer {
+	text-align: center;
+}
+ul.pagination {
+	text-align: center;
+}
+.post {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}

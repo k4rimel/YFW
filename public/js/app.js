@@ -1,0 +1,1 @@
+var commentApp = angular.module('mfwApp', ['mainCtrl', 'mfwService']);

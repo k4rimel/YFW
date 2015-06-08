@@ -4,7 +4,9 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
-
+/vendor
+/node_modules
+.env
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
@@ -26,7 +28,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -41,3 +44,22 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Laravel
+/bootstrap/compiled.php
+/vendor
+
+# Configuration
+/app/config/local
+/app/config/staging
+/app/config/production
+
+# Composer
+composer.phar
+composer.lock
+
+# OS
+.DS_Store
+.idea/
+vagrant
+.vagrant

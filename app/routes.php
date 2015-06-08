@@ -1,68 +1,27 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-// Route::get('/test/{arg?}', function($arg = null)
-// {
-// 	if ($arg == null) return 'Test.';
-// 	return "Test / {$arg}";
-// });
-Route::get('/',  'MainPageController@displayLatestContent');
+// app/routes.php
 
-Route::get('/post', function(){
-	return View::make('post');
-});
-
-Route::post('/postImg', 'UploadController@HandleImgUpload');
-
-
-// Route::get('/logout', function()
-// {
-// 	Auth::logout();
-// 	return Response::make('You are now logged out. :(');
-// });
-
-Route::get('/admin', array(
-	'before' => 'auth',
-	function()
-	{
-		return Response::make('admin panel');
-	}
-));
-
-Route::get('/admin', function()
+// =============================================
+// HOME PAGE ===================================
+// =============================================
+Route::get("/", function()
 {
-    return View::make('admin');
-});
-Route::post('/admin', function()
-{
-	$credentials = Input::only('username', 'password');
-	if (Auth::attempt($credentials)) {
-		return Redirect::intended('/admin');
-	}
-	return Redirect::to('/');
+// we dont need to use Laravel Blade
+// we will return a PHP file that will hold all of our Angular content
+// see the “Where to Place Angular Files” below to see ideas on how to structure your app
+return View::make("index"); // will return app/views/index.php
 });
 
-// Route::get('/signup', function()
-// {
-// 	return View::make('create_user_form');
-// });
-// Route::post('/signup', function()
-// {
-// 	$user = new User;
-// 	$user->username 	= Input::get('username');
-// 	$user->password 	= Hash::make(Input::get('password'));
-// 	$user->email    	= Input::get('email');
-// 	$user->save();
+// =============================================
+// API ROUTES ==================================
+// =============================================
+Route::group(array("prefix" => "api"), function() {
+	// since we will be using this just for CRUD, we won't need create and edit
+// Angular will handle both of those forms
+// this ensures that a user can't access api/create or api/edit when there's nothing there
+Route::resource('posts', 'PostController',
+    array('only' => array('index', 'store', 'destroy')));
 
-// 	return Response::make('User created!');
-// });
 
+});
